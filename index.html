@@ -11,7 +11,7 @@ button:active{background:#ee596f;position:relative;color:#000;top:5px;box-shadow
 <meta charset="utf-8">
 <title>PS4MACEDO 9.00 SUPERLIGHT 10 (GOLDHEN V2.2.2)</title>
 <script> // carrega a cache
-window.applicationCache.onprogress=function(e){document.getElementById("progress").innerHTML='Instalando Cache Offline: <font color="#ee596f">'+Math.round(e.loaded/e.total*100)+"%</font>"},window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML='Cache <font color="#ee596f">instalada</font> com sucesso!!!',setTimeout(function(){document.getElementById("progress").innerHTML='Processo de download da cache para utilizar o <font color="#ee596f">host offline</font>.',document.getElementById("progress").innerHTML='Saia, <font color="#ee596f">desabilite a rede</font> e retorne ao navegador.', cache=true},1500)}
+window.applicationCache.onprogress=function(e){document.getElementById("progress").innerHTML='Installing Cache Offline: <font color="#ee596f">'+Math.round(e.loaded/e.total*100)+"%</font>"},window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML='Cache <font color="#ee596f">installed</font> successfully!!!',setTimeout(function(){document.getElementById("progress").innerHTML='Cache download process to use <font color="#ee596f">offline host</font>.',document.getElementById("progress").innerHTML='Exit, <font color="#ee596f">disable networking</font> and return to the browser.', cache=true},1500)}
 </script>
 <script> // loader
 function injectPayload(){ //single payload inject for both conditions/removed need for binloader/netcat etc - stooged
@@ -918,7 +918,8 @@ chain.run();
 window.progress.innerHTML="Enabling USB for the <font color=\"#ee596f\">ExFatHax...</font>";
 
 //Trigger OOB
-alert("\n\nQuase pronto!!! Agora siga os passos abaixo para concluir o desbloqueio:\n\n1. Insira o USB com o arquivo exfathax_pico.img (pOOBs4). \n2. Após a notificação \"...USB é incompatível\", clique em OK.");
+alert("\n\nAlmost done!!! Now follow the steps below to achieve the unlock:
+\n1. Insert the USB with the file exfathax_pico.img (pOOBs4). \n2. After the notification \"...USB is incompatible\", click OK.");
 
 //Trigger corrupt knote
 {
@@ -947,7 +948,7 @@ chain.fcall(window.syscalls[203], patch_buffer, 0x4000);
 chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
-alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
+alert("\n\n\nIn an attempt to avoid errors, remove the USB now and click OK.");
 
 window.progress.innerHTML="Loading the <font color=\"#ee596f\">Goldhen v2.2.2...</font>";														   
 setTimeout(injectPayload,1500);
